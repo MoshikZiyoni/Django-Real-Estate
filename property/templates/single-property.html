@@ -43,9 +43,10 @@ align-items: center;">
 </form>
 <br>
             {% for project in final_proj %}
-            <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: xx-large">Project:<br>
+            <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: xx-large; text-decoration: underline">Project:<br>
             </p>
             <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: larger">
+              Project: {{ project.type_project }}<br>
               Size: {{project.size_project}} <br>
               Company: {{project.company}}<br>
               Value: {{project.value}}<br>

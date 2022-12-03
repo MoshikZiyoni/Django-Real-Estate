@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %} 
+
+
+<div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;">
+  
+      
+    
+    <div class="col">
+      <div class="card">
+        <div class="card-body" >
+      
+          <h5 class="card-title" style="color: purple; text-decoration: underline;">{{property.property_type}}</h5>
+          </a>
+        <p class="card-text" style="font-weight: 600;"> Room: {{property.room}} <br>
+            floor: {{property.floor}}<br>
+            square meter: {{property.square_meter}}<br>
+            location: {{property.location}}<br>
+            street: {{property.street}}<br>
+            street number: {{property.street_number}}<br>
+            price: {{property.price}}<br>
+            
+<br><br>
+<form name="num" id="num" >
+  <select name="num">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+   
+    <option value='10'>10</option>
+  </select>
+  <input type="submit" value="future price">
+
+</form>
+<br>
+            {% for project in final_proj %}
+            project:<br>
+              size: {{project.size_project}} <br>
+              company: {{project.company}}<br>
+              value: {{project.value}}<br>
+              location: {{project.location}}<br>
+              street: {{project.street}}<br>
+              street number: {{project.street_number}}<br>
+              dates: {{project.dates}}<br>
+              <p style="background-color: green">future price : {{project.final_price}}</p> <br> 
+              <br><br>
+       
+         {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}   
+
+
+
+
+
+ 
+
+
+
+
+
+

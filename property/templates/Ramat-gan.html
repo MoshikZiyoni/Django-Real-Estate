@@ -1,0 +1,84 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+   <div class="card mb-4">
+
+     <div class="card-header">
+         <i class="fas fa-table me-1"></i>
+         Results Found:
+     </div>
+     <div class="card-body">
+         <table id="datatablesSimple">
+             <thead>
+              
+                 <tr>
+                   <th>Property ID</th>
+                     <th>Rooms</th>
+                     <th>Floor</th>
+                     <th>Property Type</th>
+                     <th>Square Meters</th>
+                     <th>City</th>
+                     <th>Street</th>
+                     <th>Street Number</th>
+                     <th>Price</th>
+                
+
+                     
+                 </tr>
+             </thead>
+             <!-- <tfoot>
+                 <tr>
+                   <th>Property Number</th>
+                     <th>rooms</th>
+                     <th>floor</th>
+                     <th>Property Type</th>
+                     <th>Square meters</th>
+                     <th>City</th>
+                     <th>Street</th>
+                     <th>Price</th>
+                     <th>Investment range</th>
+                     
+                 </tr>
+             </tfoot> -->
+           
+             <tbody>
+               
+           
+               {% for apt in rmg %}
+               <tr >
+                  
+                   <th style="color:blue ;"><a href="{% url 'property:single_apt' apt.id %}" >{{ apt.id }}</a></th>
+                 
+                   <th>{{ apt.room }}</th>
+                   <th>{{ apt.floor }}</th>
+                   <th>{{apt.property_type}}</th>
+                   <th>{{apt.square_meter}}</th>
+                   <th>{{apt.location}}</th>
+                   <th>{{apt.street}}</th>
+                   <th>{{apt.street_number}}</th>
+                   <td>{{apt.price}} </td>
+                   
+               </tr> 
+               {% endfor %}
+               
+                   </tbody>
+                
+                   
+
+
+
+                 </table>
+             </div>
+         </div>
+
+     </div>
+ </main>
+ <footer class="py-4 bg-light mt-auto">
+     <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+
+
+
+{% endblock %}

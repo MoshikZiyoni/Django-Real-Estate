@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+        
+        {% block content %}
+        <body style="background-color: burlywood">
+          <img src="{% static 'assets/img/search.PNG' %}" style="height:500px; width: 500px; position: absolute; right: 30px;">
+
+        <form action="{% url 'property:result' %}" method="POST" enctype=multipart/form-data name="searchproperty" style= "padding:10px 0px 0px 30px;">
+          {% csrf_token %}
+        
+            <!-- {{ searchingform.as_table }}   -->
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper"   >
+                <!-- {{ searchingform.room.errors }} -->
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large;   border-bottom: 2px solid wheat; "  for="{{ form.room.id_for_label }}">room: </label>
+                
+                {{ searchingform.room }}
+                
+            </div>
+
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper" >
+                {{ searchingform.floor.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;" for="{{ form.floor.id_for_label }}">floor:</label>
+                {{ searchingform.floor }}
+                
+            </div>
+
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.property_type.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.property_type.id_for_label }}" >property type:</label>
+                
+                 <select name="property_type" id="property_type">
+                <option for="{{ form.property_type.id_for_label }}" value="apartment">apartment</option>
+                <option for="{{ form.property_type.id_for_label }}" value="house">house</option> 
+              </select>
+                
+                <!-- {{ searchingform.property_type }} -->
+              
+                
+            </div>
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.square_meter.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.square_meter.id_for_label }}">square meter:</label>
+                {{ searchingform.square_meter }}
+                
+            </div>
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.location.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.location.id_for_label }}">location:</label>
+                <select name="location" id="location">
+                  <option for="{{ form.location.id_for_label }}" value="Ramat-gan">Ramat-gan</option>
+                  <option for="{{ form.location.id_for_label }}" value="Tel-aviv">Tel-aviv</option>
+                  <option for="{{ form.location.id_for_label }}" value="Rishon-lezion">Rishon-lezion</option>
+
+                </select>
+                
+            </div>
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.street.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.street.id_for_label }}">street:</label>
+                <select name="street" id="street">
+                  <optgroup label="Ramat-gan">
+                  <option for="{{ form.street.id_for_label }}" value="Alenbi">Alenbi</option>
+                  <option for="{{ form.street.id_for_label }}" value="King-george">King-george</option>  
+                </optgroup>
+                  <optgroup label="Tel-aviv">
+                  <option for="{{ form.street.id_for_label }}" value="Rotchild">Rotchild</option>
+                  <option for="{{ form.street.id_for_label }}" value="Dizingof">Dizingof</option>
+                  </optgroup>
+                  <optgroup label="Rishon-lezion">
+                  <option for="{{ form.street.id_for_label }}" value="Bugrashov">Bugrashov</option>
+                  </optgroup>
+                </select>
+                
+            </div>
+         
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.price.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.price.id_for_label }}">price</label>
+                {{ searchingform.price }}
+                
+            </div>
+            {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.investment_range.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.investment_range.id_for_label }}">investment-range</label>
+                {{ searchingform.investment_range }}
+                
+            </div>
+<br>
+
+                  <input type="submit" value = 'submit'>
+          
+              </form> 
+
+        {% endblock %}     
+
+</body>
+</html>
+

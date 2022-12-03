@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %} 
+
+
+
+<div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;">
+  
+      
+    
+    <div class="col">
+      <div class="card">
+        <div class="card-body" >
+      
+          <h5 class="card-title" style="color: purple; text-decoration: underline;">{{project.type_project}}</h5>
+          </a>
+        <p class="card-text" style="font-weight: 600;"> size: {{project.size_project}} <br>
+            company: {{project.company}}<br>
+            value: {{project.value}}<br>
+            location: {{project.location}}<br>
+            street: {{project.street}}<br>
+            street number: {{project.street_number}}<br>
+            dates: {{project.dates}}<br>
+         </p>
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+{% endblock %}   
+
+
+   
+
+
+
+

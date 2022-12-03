@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+   <div class="card mb-4">
+
+     <div class="card-header">
+         <i class="fas fa-table me-1"></i>
+         Results Found:
+     </div>
+     <div class="card-body">
+         <table id="datatablesSimple">
+             <thead>
+              
+                 <tr>
+                   <th>Project ID</th>
+                     <th>type_project</th>
+                     <th>size_project</th>
+                     <th>company</th>
+                     <th>value</th>
+                     <th>location</th>
+                     <th>Street</th>
+                     <th>Street Number</th>
+                     <th>starting date</th>
+                   
+                     
+                 </tr>
+             </thead>
+             <!-- <tfoot>
+                 <tr>
+                   <th>Property Number</th>
+                     <th>rooms</th>
+                     <th>floor</th>
+                     <th>Property Type</th>
+                     <th>Square meters</th>
+                     <th>City</th>
+                     <th>Street</th>
+                     <th>Price</th>
+                     <th>Investment range</th>
+                     
+                 </tr>
+             </tfoot> -->
+           
+             <tbody>
+               
+           
+               {% for proj in projects_all %}
+               <tr >
+                  
+                   <th style="color:blue ;"><a href="{% url 'property:single_project' proj.id %}" >{{ proj.id }}</a></th>
+                 
+                   <th>{{ proj.type_project }}</th>
+                   <th>{{ proj.size_project }}</th>
+                   <th>{{proj.company}}</th>
+                   <th>{{proj.value}}</th>
+                   <th>{{proj.location}}</th>
+                   <th>{{proj.street}}</th>
+                   <th>{{proj.street_number}}</th>
+                   <th>{{proj.dates}} </th>
+                   
+               </tr> 
+               {% endfor %}
+               
+                   </tbody>
+                
+                   
+
+
+
+                 </table>
+             </div>
+         </div>
+
+     </div>
+ </main>
+ <footer class="py-4 bg-light mt-auto">
+     <div class="container-fluid px-4">
+         <div class="d-flex align-items-center justify-content-between small">
+
+
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+ {% block content %}
+ {% load static %}
+
+<body style="background-color: burlywood">
+    <div class="card mb-4">
+
+      <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          Results Found:
+      </div>
+      <div class="card-body">
+          <table id="datatablesSimple">
+              <thead>
+                  <tr>
+                    <th>Property ID</th>
+                      <th>Rooms</th>
+                      <th>Floor</th>
+                      <th>Property Type</th>
+                      <th>Square Meters</th>
+                      <th>City</th>
+                      <th>Street</th>
+                      <th>Street Number</th>
+                      <th>Price</th>
+                      <th>Value</th>
+                      <th>Years</th>
+                      <th>Future Price</th>
+
+                      
+                  </tr>
+              </thead>
+              <!-- <tfoot>
+                  <tr>
+                    <th>Property Number</th>
+                      <th>rooms</th>
+                      <th>floor</th>
+                      <th>Property Type</th>
+                      <th>Square meters</th>
+                      <th>City</th>
+                      <th>Street</th>
+                      <th>Price</th>
+                      <th>Investment range</th>
+                      
+                  </tr>
+              </tfoot> -->
+            
+              <tbody>
+                
+              
+
+                
+                {% for proj in final_proj %}
+                
+                <tr >
+                   
+                    <th style="color:red ;">{{ proj.id }}</th>
+                  
+                    <th>{{ proj.room }}</th>
+                    <th>{{ proj.floor }}</th>
+                    <th>{{proj.property_type}}</th>
+                    <th>{{proj.square_meter}}</th>
+                    <th>{{proj.location}}</th>
+                    <th>{{proj.street}}</th>
+                    <th>{{proj.street_number}}</th>
+                    
+                    <td>{{proj.price}} {{proj.type_project}}</td>
+                    <td>{{proj.value}}</td>
+                    <td>{{ proj.years }}</td>
+                    <th style='background-color: limegreen;'>{{proj.final_price}}</th>
+                    
+
+
+                
+
+                </tr> 
+                {% endfor %}
+                    </tbody>
+               
+                   
+
+
+
+                  </table>
+              </div>
+          </div>
+
+      </div>
+  </main>
+
+
+
+{% endblock %}
+
+</body>

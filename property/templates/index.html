@@ -102,7 +102,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px 4%">
-                        <h1 style="color: rgb(255, 255, 255) ;text-shadow :2px 15px 15px black;" class="mt-4">Real-Estate</h1>
+                        <h1 style="color: rgb(255, 255, 255) ;text-shadow :2px 15px 15px black;" class="mt-4" >Real-Estate</h1>
                         <ol class="breadcrumb mb-4">
                             <li style="color: white ;font-weight: 500; text-shadow :2px 15px 15px black"  class="breadcrumb-item active">Welcome {{ user.username }}</li>
                         </ol>
@@ -157,9 +157,10 @@
                     </div> -->
 
                             <!-- ###### -->
-                            <div class="row" style="justify-content: space-around">
-                                <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);">
-                                    <div class="card"  >
+                          
+                            <div class="row" style="justify-content: space-around; ">
+                                <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69); border-radius: 2em; ">
+                                    <div class="card" >
                                         <div class="card-body" >
                                     <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Tel-Aviv</h5>
                                     <img src="{% static 'assets/img/tlv.jpg' %}" style="width:85% ;">
@@ -169,13 +170,13 @@
                                       <a href="{% url 'property:telaviva' %}" class="btn btn-primary" style="font-weight:750 ; font-style:italic; font-size:large ;">TLV-Apartments</a>
                                     </div>
                                   </div>
-
+                                
 
                                 <br><br><br>
 
 
                             </div>
-                            <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);">
+                            <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em">
                                 <div class="card">
                                     <div class="card-body">
                                       <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Rishon-lezion</h5>
@@ -192,11 +193,11 @@
 
 
                         <div class="row" style="justify-content: space-around">
-                            <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);">
+                            <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em">
                                 
                                 <div class="card"  >
                                
-                                <a class="small text-white stretched-link" href="{% url 'property:all_projects' %}">All Projects</a>
+                                <a class="small text-white stretched-link" href="{% url 'property:all_projects' %}"></a>
                                 <div class="card-body" >
                                     <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Projects</h5>
                                     <img src="{% static 'assets/img/construction.jpeg' %}" style="width:100% ;">
@@ -208,7 +209,7 @@
                               </div>
                             
                         </div>
-                        <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);">
+                        <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em">
                             <div class="card">
                                 <div class="card-body">
                                   <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Ramat-Gan</h5>

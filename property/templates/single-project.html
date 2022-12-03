@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %} 
 
+<body style="background-color: burlywood">
+  
 
 
 <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100vh;
@@ -10,26 +12,27 @@ align-items: center;">
   
       
     
-    <div class="col">
-      <div class="card">
+    <div class="col "  style=" box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em;width: 100% ;height: 100%;">
+      <div class="card" style=" border-radius: 2em; background-color: rgba(196, 230, 253, 0.945); ">
         <div class="card-body" >
       
-          <h5 class="card-title" style="color: purple; text-decoration: underline;">{{project.type_project}}</h5>
-          </a>
-        <p class="card-text" style="font-weight: 600;"> size: {{project.size_project}} <br>
-            company: {{project.company}}<br>
-            value: {{project.value}}<br>
-            location: {{project.location}}<br>
-            street: {{project.street}}<br>
-            street number: {{project.street_number}}<br>
-            dates: {{project.dates}}<br>
-         </p>
+          <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: xx-large; color: rgb(25, 48, 182)">{{project.type_project}}<br>
+          </p>
+          <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: larger">
+            Size: {{project.size_project}} <br>
+            Company: {{project.company}}<br>
+            Value: {{project.value}}<br>
+            Location: {{project.location}}<br>
+            Street: {{project.street}}<br>
+            Street number: {{project.street_number}}<br>
+            Dates: {{project.dates}}<br>
+          </p>
         </div>
       </div>
     </div>
     
 </div>
-
+</body>
 {% endblock %}   
 
 

@@ -684,6 +684,7 @@ progress {
 }
 
 .col {
+  box-shadow:10em;
   flex: 1 0 0%;
 }
 
@@ -723,6 +724,7 @@ progress {
 }
 
 .col-auto {
+  
   flex: 0 0 auto;
   width: auto;
 }
@@ -962,6 +964,7 @@ progress {
   }
 
   .col-sm-6 {
+    box-shadow: 2em;
     flex: 0 0 auto;
     width: 50%;
   }
@@ -4528,6 +4531,7 @@ textarea.form-control-lg {
   height: '100px !important';
 }
 .card {
+  
   position: relative;
   display: flex;
   flex-direction: column;
@@ -4536,7 +4540,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 2em;
 }
 .card > hr {
   margin-right: 0;

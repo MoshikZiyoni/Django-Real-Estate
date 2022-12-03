@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %} 
 
-
+<body style="background-color: burlywood">
 <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100vh;
 display: flex;
 justify-content: center;
@@ -9,19 +9,19 @@ align-items: center;">
   
       
     
-    <div class="col">
-      <div class="card">
-        <div class="card-body" >
+    <div class="col" style=" box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em;width: 100% ;height: 100%;" >
+      <div class="card" style=" border-radius: 2em; background-color: rgba(196, 230, 253, 0.945); ">
+        <div class="card-body">
       
-          <h5 class="card-title" style="color: purple; text-decoration: underline;">{{property.property_type}}</h5>
+          <h5 class="card-title" style="color: rgb(25, 48, 182); text-decoration: underline; font-style: oblique; font-size: xx-large;">{{property.property_type}}</h5>
           </a>
-        <p class="card-text" style="font-weight: 600;"> Room: {{property.room}} <br>
-            floor: {{property.floor}}<br>
-            square meter: {{property.square_meter}}<br>
-            location: {{property.location}}<br>
-            street: {{property.street}}<br>
-            street number: {{property.street_number}}<br>
-            price: {{property.price}}<br>
+        <p class="card-text" style="font-weight: 600; font-style: oblique; font-size: larger;"> Room: {{property.room}} <br>
+            Floor: {{property.floor}}<br>
+            Square meter: {{property.square_meter}}<br>
+            Location: {{property.location}}<br>
+            Street: {{property.street}}<br>
+            Street number: {{property.street_number}}<br>
+            Price: {{property.price}}<br>
             
 <br><br>
 <form name="num" id="num" >
@@ -38,20 +38,23 @@ align-items: center;">
    
     <option value='10'>10</option>
   </select>
-  <input type="submit" value="future price">
+  <input type="submit" value="Investment range">
 
 </form>
 <br>
             {% for project in final_proj %}
-            project:<br>
-              size: {{project.size_project}} <br>
-              company: {{project.company}}<br>
-              value: {{project.value}}<br>
-              location: {{project.location}}<br>
-              street: {{project.street}}<br>
-              street number: {{project.street_number}}<br>
-              dates: {{project.dates}}<br>
-              <p style="background-color: green">future price : {{project.final_price}}</p> <br> 
+            <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: xx-large">Project:<br>
+            </p>
+            <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: larger">
+              Size: {{project.size_project}} <br>
+              Company: {{project.company}}<br>
+              Value: {{project.value}}<br>
+              Location: {{project.location}}<br>
+              Street: {{project.street}}<br>
+              Street number: {{project.street_number}}<br>
+              Dates: {{project.dates}}<br>
+            </p>
+              <p style="background-color: green; color: antiquewhite;">Future price : {{project.final_price}}</p> <br> 
               <br><br>
        
          {% endfor %}
@@ -60,7 +63,7 @@ align-items: center;">
     </div>
     
 </div>
-
+</body>
 
 {% endblock %}   
 

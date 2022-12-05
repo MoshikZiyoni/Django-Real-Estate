@@ -1,13 +1,6 @@
-# Books model 
-the book model will have these fields:
-Id (PK)
-Name
-Author 
-Year Published 
-Type (1/2/3)
+# Property
+1. Git clone
+2.Install venv   ----- python -m venv venv
 
-# Loans
-customer 
-book
-Loandate
-Returndate
+# Project
+

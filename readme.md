@@ -1,7 +1,10 @@
 # Steps
 1. Git clone
+
 2.Install venv   ----- python -m venv venv
+
 3.Then cd.\venv\Scripts\Activate
+
 4.pip install -r requirements.txt
 
 

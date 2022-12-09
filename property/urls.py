@@ -12,6 +12,7 @@ urlpatterns = [
    path('tlv-apt/', views.telaviva, name='telaviva'),
    path('Ramat-gan-apt/', views.ramatgan, name='ramatgan'),
    path('Rishon-lezion-apt/', views.rishon, name='rishon'),
+   path('search/', views.nav_search, name='nav_search'),
    path('<id>/', views.single_apt, name='single_apt'),
    path('projects/<id>/', views.single_project, name='single_project')
    

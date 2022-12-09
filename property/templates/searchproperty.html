@@ -15,8 +15,15 @@
         
         {% block content %}
         <body style="background-color: burlywood">
-          <img src="{% static 'assets/img/search.PNG' %}" style="height:500px; width: 500px; position: absolute; right: 30px;">
-
+          <!-- <img src="{% static 'assets/img/search.PNG' %}" style="height:500px; width: 500px; position: absolute; right: 30px;"> -->
+          <br>
+          <center>
+          <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ;" >
+            __ <br>please search for a property according to your maximum criteria.<br>
+            for example:<br><br> max price of 10,000,000 will show all the properties <br> that are included in this price.<br> max investment range of 7 years <br>
+             will show the future price of the found properties at this years. etc..<br>__
+          </div>
+        </center>
         <form action="{% url 'property:result' %}" method="POST" enctype=multipart/form-data name="searchproperty" style= "padding:10px 0px 0px 30px;">
           {% csrf_token %}
         
@@ -106,7 +113,7 @@
             </div>
 <br>
 
-                  <input type="submit" value = 'submit'>
+                  <input type="submit" value = 'Search properties' style="background-color: blueviolet; border-radius: 2em; color: azure; font-weight: 500;">
           
               </form> 
 

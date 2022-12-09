@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %} 
+<body>
+    
+    <br>
+    <div class="text" style="font-size: xx-large; color: rgb(227, 236, 253); background-color: rgb(218, 153, 32);"> You searched for: '{{ searched }}'
+    </div>
+         <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Results Found: 
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                     
+                        <th style="background-color: rgb(114, 93, 235);">Rooms</th>
+                        <th style="background-color: rgb(114, 93, 235);">Floor</th>
+                        <th style="background-color: rgb(114, 93, 235);">Property Type</th>
+                        <th style="background-color: rgb(114, 93, 235);">Square Meters</th>
+                        <th style="background-color: rgb(114, 93, 235);">City</th>
+                        <th style="background-color: rgb(114, 93, 235);">Street</th>
+                        <th style="background-color: rgb(114, 93, 235);">Street Number</th>
+                        <th style="background-color: rgb(114, 93, 235);">Price</th>
+                    </tr>
+                </thead>
+                <tbody>    
+                  {% for proj in A_property %}
+                  <tr >
+                      <th>{{ proj.room }}</th>
+                      <th>{{ proj.floor }}</th>
+                      <th>{{proj.property_type}}</th>
+                      <th>{{proj.square_meter}}</th>
+                      <th>{{proj.location}}</th>
+                      <th>{{proj.street}}</th>
+                      <th>{{proj.street_number}}</th>
+                      <th>{{proj.price}}</th>
+                  </tr> 
+                  {% endfor %}
+                      </tbody>
+
+
+                    
+                </div>
+          
+  
+
+            
+                
+            </div>
+
+
+           
+            <div class="card-body">
+               
+                    <thead>
+                        
+                        <tr>
+                            
+                            <th style="background-color: rgb(182, 86, 211);">Project type</th>
+                            <th style="background-color: rgb(182, 86, 211);">Size</th>
+                            <th style="background-color: rgb(182, 86, 211);">Company</th>
+                            <th style="background-color: rgb(182, 86, 211);">Value</th>
+                            <th style="background-color: rgb(182, 86, 211);">City</th>
+                            <th style="background-color: rgb(182, 86, 211);">Street</th>
+                            <th style="background-color: rgb(182, 86, 211);">Street Number</th>
+                            <th style="background-color: rgb(182, 86, 211);">Dates</th>
+                        </tr>
+                    </thead>
+                    <tbody>    
+
+                      {% for proj in B_projects %}
+                      <tr >
+                          <th>{{ proj.type_project }}</th>
+                          <th>{{ proj.size_project }}</th>
+                          <th>{{proj.company}}</th>
+                          <th>{{proj.value}}</th>
+                          <th>{{proj.location}}</th>
+                          <th>{{proj.street}}</th>
+                          <th>{{proj.street_number}}</th>
+                          <th>{{proj.dates}}</th>
+                      </tr> 
+                      {% endfor %}
+                          </tbody>
+    
+      
+                        </table>
+                    </div>
+              
+
+</body>
+{% endblock %}  
+</html>

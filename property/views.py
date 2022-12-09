@@ -14,6 +14,7 @@ from django.contrib.auth import login
 from django.contrib import messages
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.db.models import Q
 
 # def list(request):
 #    return HttpResponse("Hello DJANGO library")
@@ -292,5 +293,21 @@ def project_api(request):
     project_ser=Project.objects.all()
     serializedproj = Projectserializers(project_ser,many=True)
     return Response (serializedproj.data)
+
+
+
+
+
+def nav_search(request):
+    if request.method=="POST":
+        searched=request.POST["search1"]
+        A_property=Property.objects.filter(Q(location__contains = searched) | Q(street__contains = searched)| Q(room__contains = searched)| Q(floor__contains = searched)| Q(property_type__contains = searched)| Q(square_meter__contains = searched)| Q(street_number__contains = searched)| Q(price__contains = searched))
+        B_projects=Project.objects.filter(Q(type_project__contains = searched) | Q(size_project__contains = searched)| Q(company__contains = searched)| Q(value__contains = searched)| Q(location__contains = searched)| Q(street__contains = searched)| Q(street_number__contains = searched)| Q(dates__contains = searched))
+    if searched == None:
+        searched="nothing"
+
+           
+    return render (request,"search_all.html",{"A_property":A_property, "B_projects":B_projects, "searched":searched})
+
 
 

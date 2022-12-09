@@ -2,6 +2,12 @@
 {% block content %} 
 
 <body style="background-color: burlywood">
+
+  <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align:center ; position:absolute right20px ; ;" >
+    <p style="font-size:large ;" >Use the button INVESTMENT-RANGE </p>
+    <p style="font-size: large;">Find out how much the apartment will be worth and which projects will be built next to it.</p>
+  </div>
+
 <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100vh;
 display: flex;
 justify-content: center;
@@ -25,7 +31,9 @@ align-items: center;">
             
 <br><br>
 <form name="num" id="num" >
+  <h4>Years</h4>
   <select name="num">
+    
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -38,7 +46,7 @@ align-items: center;">
    
     <option value='10'>10</option>
   </select>
-  <input type="submit" value="Investment range">
+  <input type="submit" value="Investment range" class="btn btn-primary" >
 
 </form>
 <br>

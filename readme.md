@@ -9,6 +9,6 @@
 
 
 # Project
-In the Navbar you all the full search form called search property
-you can also search in the home page by city and pick up 1 Property and see what the value will be in the future 
+In the Navbar you have the full search form called search property
+you can also search on the home page by city and pick up 1 Property and see what the value will be in the future 
 

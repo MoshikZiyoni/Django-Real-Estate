@@ -82,7 +82,8 @@ def result(request):
     else:
         city=Property.objects.filter(location__contains = new_form[4]).values()
         text = "Hmmm... It's looks like we don't have properties  that match your search.. please try again with different parameters"
-        return render(request,'result.html',{'text':text,'city':city})
+        text1="Here are some examples for some other properties that may interest you:"
+        return render(request,'result.html',{'text':text,'city':city,'text1':text1})
 
 
 ####Here it's our homepage

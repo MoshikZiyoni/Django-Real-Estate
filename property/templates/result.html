@@ -3,24 +3,29 @@
  {% load static %}
 
 <body style="background-color: burlywood">
-  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white;">{{ text }}</div>
-  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white;">
+  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white; font-style: oblique;">{{ text }}</div>
+  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white; background-color: rgb(32, 150, 218); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgb(0, 0, 0) ;position: static;text-align: center ;width: 40%; font-style: oblique;">{{ text1 }}</div>
+    <table id="datatablesSimple">
+      <thead>
+          <tr>
     {% for i in city %}
-    {{i.room }}
-    {{ i.floor }}
-    {{ i.property_type }}
-    {{ i.square_meter }}
-    {{ i.location }}
-    {{ i.street }}
-    {{ i.strret_number }}
-    {{ i.price }}
-
+    <th>{{i.room }}</th>
+      <th>{{ i.floor }}</th>
+        <th>{{ i.property_type }}</th>
+          <th>{{ i.square_meter }}</th>
+            <th>{{ i.location }}</th>
+              <th>{{ i.street }}</th>
+                <th>{{ i.strret_number }}</th>
+                  <th>{{ i.price }}</th>
+        
+                </tr>
+              </thead>
     {% endfor %}           
   </div> 
 
   
   
-   {% if text == None %}
+   {% if text == None and text1 == None %}
   <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align:center; position:static;width: 100%;" >
         <p style="font-size: x-large;" >Each property contains underneath the related project that justifies the property's future price.</p>
       </div>

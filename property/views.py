@@ -45,9 +45,8 @@ def result(request):
     new_form = SearchingForm(request.POST, request.FILES)
     new_form= new_form.get_form()
     found_apt = Property.objects.filter(room__lte = new_form[0],floor__lte = new_form[1],property_type__contains = new_form[2],square_meter__lte = new_form[3],location__contains = new_form[4],street__contains = new_form[5],price__lte = new_form[6]).values()
-    print(found_apt)
-    print (type(found_apt))
-    if found_apt !='QuerySet[]':
+    if found_apt:
+    
         list_id = []
         for apt in found_apt:
             list_id.append(apt['id'])
@@ -103,7 +102,8 @@ def result(request):
         
         return render(request,'result.html',{'final_proj':final_proj,'list_id':list_id})
     else:
-        return render(request,'index.html',{})
+        text = 'Hmmm... it looks like we dont have properties any that match your search.. please try again with different parameters'
+        return render(request,'result.html',{'text':text})
 
 
 

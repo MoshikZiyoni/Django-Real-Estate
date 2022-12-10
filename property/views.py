@@ -16,44 +16,22 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.db.models import Q
 
-# def list(request):
-#    return HttpResponse("Hello DJANGO library")
-
-def get_name(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = SearchingForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = SearchingForm()
-
-    return render(request, 'result.html', {'form': form})
 
 @login_required
 #### Here we start the function that filter to the property's according to the Form  
 def result(request):
     final_proj = []
-    my_search = request.POST.get('searchproperty')
     new_form = SearchingForm(request.POST, request.FILES)
     new_form= new_form.get_form()
     found_apt = Property.objects.filter(room__lte = new_form[0],floor__lte = new_form[1],property_type__contains = new_form[2],square_meter__lte = new_form[3],location__contains = new_form[4],street__contains = new_form[5],price__lte = new_form[6]).values()
     if found_apt:
     
-        list_id = []
+        
         for apt in found_apt:
-            list_id.append(apt['id'])
+            
             
             found_apt1 = {
             'id':apt['id'],
-            'id1':Property.id,
             'room':apt['room'],
             'floor':apt['floor'],
             'property_type':apt['property_type'],
@@ -100,66 +78,27 @@ def result(request):
                 
             }
         
-        return render(request,'result.html',{'final_proj':final_proj,'list_id':list_id})
+        return render(request,'result.html',{'final_proj':final_proj})
     else:
-        text = 'Hmmm... it looks like we dont have properties any that match your search.. please try again with different parameters'
-        return render(request,'result.html',{'text':text})
+        city=Property.objects.filter(location__contains = new_form[4]).values()
+        text = "Hmmm... It's looks like we don't have properties  that match your search.. please try again with different parameters"
+        return render(request,'result.html',{'text':text,'city':city})
 
 
-
-
-
-####here it's our homepage
+####Here it's our homepage
 @login_required
 def home(request):
-   context = {
-       
-   }
   
-   return render(request,'index.html',context)
+   return render(request,'index.html',{})
 
-####Here it's function that doing all the Form that sending all the result to function result
+####Here it's a function that does all the Form that sends all the results to function result
 @login_required
 def searchproperty(request):
-   my_search = request.GET.get('searchproperty') 
-   my_property = Property.objects.all()
    searchingform = SearchingForm(request.POST, request.FILES)
    context = ({
-            'searchingform' : searchingform
-            
-           
+            'searchingform' : searchingform 
         })
    return render(request,'searchproperty.html', context = context)  
-
-
-### This is the the function that return all the form to result.html
-@login_required
-def get_form(request):
-
-    if request.method == 'POST':
-        form = SearchingForm(request.POST)
-        if form.is_valid():
-            context = {
-            'room' : form.cleaned_data['room'],
-            'floor' : form.cleaned_data['floor'],
-            'property_type' : form.cleaned_data['property_type'],
-            'square_meter' : form.cleaned_data['square_meter'],
-            'location' : form.cleaned_data['location'],
-            'street' : form.cleaned_data['street'],
-            'street_number' : form.cleaned_data['street_number'],
-            'price' : form.cleaned_data['price']
-            }
-            
-          
-
-            return HttpResponseRedirect('/result',  context_instance=RequestContext(request))
-    else:
-        form = SearchingForm()
-        rendered_form = form.render("searchproperty.html")
-        context = {'form': rendered_form}
-        
-        return render(request, 'property/result.html', context)
-
 
 #### Register Function 
 def register_request(request):
@@ -176,15 +115,12 @@ def register_request(request):
 
 
 
-####That function return property according to the ID in the url
-
-
+####That function returns property according to the ID in the URL
 
 
 def telaviva(request):
     tlv = Property.objects.filter(location__contains = 'Tel-aviv')
     return render(request,'tlv.html',{'tlv':tlv})
-
 
 
 def ramatgan(request):
@@ -201,14 +137,8 @@ def all_projects(request):
     projects_all = Project.objects.all()
     return render(request,'projects.html',{'projects_all':projects_all})
 
-
-
-
-
-
-
+###This function it's for the single property includes filter to know the projects depends on the investment range
 def single_apt(request,id):
-    num_list = []
     final_proj = []
     property = Property.objects.get(id=id)
     futureprice = request.GET.get('num')
@@ -220,8 +150,7 @@ def single_apt(request,id):
         print(property.street)
         print('hello')
         found_project = Project.objects.filter(street__contains= property.street).values()
-            
-
+        
         for proj in found_project:
             property.street_number= int(property.street_number)
             proj['street_number']= int(proj['street_number'])
@@ -245,23 +174,17 @@ def single_apt(request,id):
                         }
                     final_proj.append(final_proj1)
                 
-        context = {
-            
-            'final_proj':final_proj,
-            
-        }
 
     return render(request, 'single-property.html', {'property':property,'final_proj':final_proj})
     
 
-
+##This function for single projcet
 def single_project(request,id):
     project = Project.objects.get(id=id)
     
-	
     return render(request, 'single-project.html', {'project':project})
 
-
+###This function it's API for properties  
 @api_view(['GET','POST'])
 def property_api(request):
    
@@ -277,11 +200,7 @@ def property_api(request):
     serializedprop = Propertyserializers(property_ser,many=True)
     return Response (serializedprop.data)
 
-
-
-
-
-
+###This function it's API for project
 @api_view(['GET','POST'])
 def project_api(request):
    
@@ -297,10 +216,7 @@ def project_api(request):
     serializedproj = Projectserializers(project_ser,many=True)
     return Response (serializedproj.data)
 
-
-
-
-
+###This is for search in the navbar
 def nav_search(request):
     if request.method=="POST":
         searched=request.POST["search1"]
@@ -311,6 +227,3 @@ def nav_search(request):
 
            
     return render (request,"search_all.html",{"A_property":A_property, "B_projects":B_projects, "searched":searched})
-
-
-

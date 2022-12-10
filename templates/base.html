@@ -20,7 +20,7 @@
     // add a zero in front of numbers<10
     m=checkTime(m);
     s=checkTime(s);
-    document.getElementById('txt').innerHTML="Jerusalem Time"+'-'+h+":"+m+":"+s;
+    document.getElementById('txt').innerHTML="Jerusalem Time"+'-'+h+":"+m+":"+s; 
     t=setTimeout('startTime()',500);
     }
     
@@ -46,7 +46,7 @@
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{% url 'property:nav_search' %} " method = POST >
             {% csrf_token %}
             <div class="input-group">
-                <div id="txt" style="color:white; font-size: x-large ; font-style: oblique; font-weight: 600 ;margin-right:25vw"></div>
+                <div id="txt" style="color:white; font-size: x-large ; font-style: oblique; font-weight: 600 ;margin-right:10vw;"></div>
                 <input class="form-control" type="text" name="search1" id= "search1" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                  <input type="submit" value="Search" class="btn btn-primary" id="btnNavbarSearch"  type="button"><i class="fas fa-search"></i></input>
             </div>
@@ -124,21 +124,12 @@
                                 
                             </nav>
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br><br><br><br><br><br><br><br>
+                       
                        
                         
                         
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <div class="small" >Logged in as:</div>
                     {{ user.username }}
                 </div>
             </nav>

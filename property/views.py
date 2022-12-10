@@ -45,62 +45,65 @@ def result(request):
     new_form = SearchingForm(request.POST, request.FILES)
     new_form= new_form.get_form()
     found_apt = Property.objects.filter(room__lte = new_form[0],floor__lte = new_form[1],property_type__contains = new_form[2],square_meter__lte = new_form[3],location__contains = new_form[4],street__contains = new_form[5],price__lte = new_form[6]).values()
-    
-    list_id = []
-    for apt in found_apt:
-        list_id.append(apt['id'])
-        
-        found_apt1 = {
-        'id':apt['id'],
-        'id1':Property.id,
-        'room':apt['room'],
-        'floor':apt['floor'],
-        'property_type':apt['property_type'],
-        'square_meter':apt['square_meter'],
-        'location':apt['location'],
-        'street':apt['street'],
-        'street_number':int(apt['street_number']),
-        'price':apt['price']
-        }
-        
-        final_proj.append(found_apt1)
-        apt_price=apt['price']
-        found_project = Project.objects.filter(street__contains= apt['street']).values()
-        
+    print(found_apt)
+    print (type(found_apt))
+    if found_apt !='QuerySet[]':
+        list_id = []
+        for apt in found_apt:
+            list_id.append(apt['id'])
+            
+            found_apt1 = {
+            'id':apt['id'],
+            'id1':Property.id,
+            'room':apt['room'],
+            'floor':apt['floor'],
+            'property_type':apt['property_type'],
+            'square_meter':apt['square_meter'],
+            'location':apt['location'],
+            'street':apt['street'],
+            'street_number':int(apt['street_number']),
+            'price':apt['price']
+            }
+            
+            final_proj.append(found_apt1)
+            apt_price=apt['price']
+            found_project = Project.objects.filter(street__contains= apt['street']).values()
+            
 
-        for proj in found_project:
-            apt['street_number']= int(apt['street_number'])
-            proj['street_number']= int(proj['street_number'])
-            if int(apt['street_number']) in range (int(proj['street_number']-15),int(proj['street_number']+1)) or int(apt['street_number']) in range (int(proj['street_number']),int(proj['street_number']+16)) :
-                our_date = proj['dates']-2022
-                if int(new_form[7])>= our_date:
-                    
+            for proj in found_project:
+                apt['street_number']= int(apt['street_number'])
+                proj['street_number']= int(proj['street_number'])
+                if int(apt['street_number']) in range (int(proj['street_number']-15),int(proj['street_number']+1)) or int(apt['street_number']) in range (int(proj['street_number']),int(proj['street_number']+16)) :
+                    our_date = proj['dates']-2022
+                    if int(new_form[7])>= our_date:
+                        
 
+                        
+                        new_price = apt_price*proj['value']
+                        apt_price = apt_price+new_price
+                        final_proj1={
+                            'final_price': apt_price,
+                            'type_project':proj['type_project'],
+                            'size_project':proj['size_project'],
+                            'company':proj['company'],
+                            'location':proj['location'],
+                            'street':proj['street'],
+                            'street_number':proj['street_number'],
+                            'dates':proj['dates'],
+                            'value':proj['value'],
+                            'years':our_date
+                            }
+                        final_proj.append(final_proj1)
                     
-                    new_price = apt_price*proj['value']
-                    apt_price = apt_price+new_price
-                    final_proj1={
-                        'final_price': apt_price,
-                        'type_project':proj['type_project'],
-                        'size_project':proj['size_project'],
-                        'company':proj['company'],
-                        'location':proj['location'],
-                        'street':proj['street'],
-                        'street_number':proj['street_number'],
-                        'dates':proj['dates'],
-                        'value':proj['value'],
-                        'years':our_date
-                        }
-                    final_proj.append(final_proj1)
+            context = {
                 
-        context = {
-            
-            'final_proj':final_proj,
-            
-        }
-    
-    return render(request,'result.html',{'final_proj':final_proj,'list_id':list_id})
-
+                'final_proj':final_proj,
+                
+            }
+        
+        return render(request,'result.html',{'final_proj':final_proj,'list_id':list_id})
+    else:
+        return render(request,'index.html',{})
 
 
 

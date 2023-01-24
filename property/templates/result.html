@@ -3,28 +3,8 @@
  {% load static %}
 
 <body style="background-color: burlywood">
-  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white; font-style: oblique;">{{ text }}</div>
-  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white; background-color: rgb(32, 150, 218); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgb(0, 0, 0) ;position: static;text-align: center ;width: 40%; font-style: oblique;">{{ text1 }}</div>
-    <table id="datatablesSimple">
-      <thead>
-          <tr>
-    {% for i in city %}
-    <th>{{i.room }}</th>
-      <th>{{ i.floor }}</th>
-        <th>{{ i.property_type }}</th>
-          <th>{{ i.square_meter }}</th>
-            <th>{{ i.location }}</th>
-              <th>{{ i.street }}</th>
-                <th>{{ i.strret_number }}</th>
-                  <th>{{ i.price }}</th>
-        
-                </tr>
-              </thead>
-    {% endfor %}           
-  </div> 
+  
 
-  
-  
    {% if text == None and text1 == None %}
   <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align:center; position:static;width: 100%;" >
         <p style="font-size: x-large;" >Each property contains underneath the related project that justifies the property's future price.</p>
@@ -37,17 +17,17 @@
           Results Found:
       </div>
       <div class="card-body">
-          <table id="datatablesSimple">
-              <thead>
+          <table id="datatablesSimple" class="table table-bordered"  width="100%" cellspacing="0">
+
+            <thead>
                   <tr>
                     <th>Property ID</th>
                       <th>Rooms</th>
                       <th>Floor</th>
                       <th>Property Type</th>
-                      <th>Square Meters</th>
+                      <th>Neighbourhood</th>
                       <th>City</th>
                       <th>Street</th>
-                      <th>Street Number</th>
                       <th>Price</th>
                       <th>Value</th>
                       <th>Years</th>
@@ -67,10 +47,10 @@
                     <th>{{ proj.room }}</th>
                     <th>{{ proj.floor }}</th>
                     <th>{{proj.property_type}}</th>
-                    <th>{{proj.square_meter}}</th>
+                    <th>{{proj.neighbourhood}}</th>
                     <th>{{proj.location}}</th>
                     <th>{{proj.street}}</th>
-                    <th>{{proj.street_number}}</th>         
+                    <!-- <th>{{proj.street_number}}</th>          -->
                     <td>{{proj.price}} {{proj.type_project}}</td>
                     <td>{{proj.value}}</td>
                     <td>{{ proj.years }}</td>
@@ -83,6 +63,50 @@
           </div>
 
       </div>
+{% else %}
+<div style="text-align: start; position: static; width: 100%; font-size: xx-large; color: white; font-style: oblique;">{{ text }}</div>
+  <div style="text-align: center; position: static; width: 100%; font-size: xx-large; color: white; background-color: rgb(32, 150, 218); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgb(0, 0, 0) ;position: static;text-align: center ;width: 40%; font-style: oblique;">{{ text1 }} {{ city_name }}</div>
+    <!-- <table id="datatablesSimple"> -->
+      <!-- <table class="table table-bordered" id="dataTable" > -->
+      <table id="dataTable" class="table table-bordered"  width="100%" cellspacing="0">
+
+
+      <thead>
+        <tr>
+          <th style="background-color: rgb(114, 93, 235);">ID</th>
+          <th style="background-color: rgb(114, 93, 235);">Rooms</th>
+          <th style="background-color: rgb(114, 93, 235);">Floor</th>
+          <th style="background-color: rgb(114, 93, 235);">Property Type</th>
+          <th style="background-color: rgb(114, 93, 235);">City</th>
+          <th style="background-color: rgb(114, 93, 235);">Street</th>
+          <th style="background-color: rgb(114, 93, 235);">Neighbourhood</th>
+          <th style="background-color: rgb(114, 93, 235);">Price</th>
+      </tr>
+    </thead>
+         <tbody> 
+    {% for i in city %}
+    <tr>
+      <th style="color:blue ;"><a href="{% url 'property:single_apt' i.id %}" >{{ i.id }}</a></th>
+    <th>{{i.room }}</th>
+      <th>{{ i.floor }}</th>
+        <th>{{ i.property_type }}</th>
+          <th>{{ i.neighbourhood }}</th>
+            <th>{{ i.location }}</th>
+              <th>{{ i.street }}</th>
+                  <th>{{ i.price }}</th>
+        
+                </tr>
+                {% endfor %}  
+            </tbody>
+          </table>
+             
+  </div> 
+</div> 
+<style>
+  th:hover {
+      background-color: lightgray;
+  }
+  </style>
       {% endif %}
   </main>
 {% endblock %}

@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %} 
 
 <body style="background-color: burlywood">
@@ -22,13 +24,25 @@ align-items: center;">
           <h5 class="card-title" style="color: rgb(25, 48, 182); text-decoration: underline; font-style: oblique; font-size: xx-large;">{{property.property_type}}</h5>
           </a>
         <p class="card-text" style="font-weight: 600; font-style: oblique; font-size: larger;"> Room: {{property.room}} <br>
+          <!-- ID:{{property.id}} -->
             Floor: {{property.floor}}<br>
             Square meter: {{property.square_meter}}<br>
             Location: {{property.location}}<br>
             Street: {{property.street}}<br>
             Street number: {{property.street_number}}<br>
             Price: {{property.price}}<br>
-            
+            <!-- <img src="{% static 'images/2image.jpg' %}" alt="property image"> -->
+            <!-- <img src="{%  static 'images/2image.jpg' %}" alt="property image"> -->
+
+            <!-- <img src="{{ MEDIA_URL }}2image.jpg" alt="property image"> -->
+            ID:{{property.id}}
+
+            <!-- <img src="{% static 'assets/img/2image.jpg' %}" style="width:85% ;">
+             -->
+             <!-- <img src="{% static 'assets/img/'  'image.jpg' %}" style="width:85% ;"> --> WORKING
+             <img src="{% static 'assets/img/' ~ property.id ~ 'image.jpg' %}" style="width:85% ;">
+
+
 <br><br>
 <form name="num" id="num" >
   <h4>Years</h4>

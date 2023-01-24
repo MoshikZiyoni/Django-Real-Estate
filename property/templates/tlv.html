@@ -1,69 +1,72 @@
 
 {% extends 'base.html' %}
- {% block content %}
+{% block content %}
 
- <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align:center; position:static;bottom: 20px;width: 100%;" >
-    <p style="font-size:large ;" >Each property contains an ID that you can click and see the future price depending on the investment range.</p>
-  </div>
-    <div class="card mb-4">
+<div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align:center; position:static;bottom: 20px;width: 100%;" >
+   <p style="font-size:large ;" >Each property contains an ID that you can click and see the future price depending on the investment range.</p>
+ </div>
+   <div class="card mb-4">
 
-      <div class="card-header">
-          <i class="fas fa-table me-1"></i>
-          Results Found:
-      </div>
-      <div class="card-body">
-          <table id="datatablesSimple">
-              <thead>
-               
-                  <tr>
-                    <th>Property ID</th>
-                      <th>Rooms</th>
-                      <th>Floor</th>
-                      <th>Property Type</th>
-                      <th>Square Meters</th>
-                      <th>City</th>
-                      <th>Street</th>
-                      <th>Street Number</th>
-                      <th>Price</th>
-                    
-                      
-                  </tr>
-              </thead>
-            
-            
-              <tbody>
-                
-            
-                {% for apt in tlv %}
-                <tr >
+     <div class="card-header">
+         <i class="fas fa-table me-1"></i>
+         Results Found:
+     </div>
+     <div class="card-body">
+         <!-- <table class="table table-bordered" id="datatablesSimple" width="100%" cellspacing="0"> -->
+           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+           <thead>
+              
+                 <tr>
+                   <th>Property ID</th>
+                     <th>Rooms</th>
+                     <th>Floor</th>
+                     <th>Property Type</th>
+                     <th>neighbourhood</th>
+                     <th>City</th>
+                     <th>Street</th>
+                     <!-- <th>Street Number</th> -->
+                     <th>Price</th>
                    
-                    <th style="color:blue ;"><a href="{% url 'property:single_apt' apt.id %}" >{{ apt.id }}</a></th>
+                     
+                 </tr>
+             </thead>
+           
+           
+             <tbody>
+               
+           
+               {% for apt in tlv %}
+               <tr >
                   
-                    <th>{{ apt.room }}</th>
-                    <th>{{ apt.floor }}</th>
-                    <th>{{apt.property_type}}</th>
-                    <th>{{apt.square_meter}}</th>
-                    <th>{{apt.location}}</th>
-                    <th>{{apt.street}}</th>
-                    <th>{{apt.street_number}}</th>
-                    <th>{{apt.price}} </th>
-                    
-                </tr> 
-                {% endfor %}
-                
-                    </tbody>
+                   <th style="color:blue ;"><a href="{% url 'property:single_apt' apt.id %}" >{{ apt.id }}</a></th>
                  
-                    
+                   <th>{{ apt.room }}</th>
+                   <th>{{ apt.floor }}</th>
+                   <th>{{apt.property_type}}</th>
+                   <th>{{apt.neighbourhood}}</th>
+                   <th>{{apt.location}}</th>
+                   <th>{{apt.street}}</th>
+                   <!-- <th>{{apt.street_number}}</th> -->
+                   <th>{{apt.price}} </th>
+                   
+               </tr> 
+               {% endfor %}
+               
+                   </tbody>
+                
+                   
 
 
 
-                  </table>
-              </div>
-          </div>
+                 </table>
+             </div>
+         </div>
 
-      </div>
-  </main>
-  
+     </div>
+   
+ <!-- </main> -->
+ 
 
 
 

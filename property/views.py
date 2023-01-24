@@ -23,7 +23,7 @@ def result(request):
     final_proj = []
     new_form = SearchingForm(request.POST, request.FILES)
     new_form= new_form.get_form()
-    found_apt = Property.objects.filter(room__lte = new_form[0],floor__lte = new_form[1],property_type__contains = new_form[2],square_meter__lte = new_form[3],location__contains = new_form[4],street__contains = new_form[5],price__lte = new_form[6]).values()
+    found_apt = Property.objects.filter(room__lte = new_form[0],floor__lte = new_form[1],property_type__contains = new_form[2],location__contains = new_form[3],neighbourhood__contains = new_form[4],price__lte = new_form[5]).values()
     if found_apt:
     
         
@@ -35,24 +35,23 @@ def result(request):
             'room':apt['room'],
             'floor':apt['floor'],
             'property_type':apt['property_type'],
-            'square_meter':apt['square_meter'],
-            'location':apt['location'],
             'street':apt['street'],
-            'street_number':int(apt['street_number']),
+            'location':apt['location'],
+            'neighbourhood':apt['neighbourhood'],
             'price':apt['price']
             }
             
             final_proj.append(found_apt1)
             apt_price=apt['price']
-            found_project = Project.objects.filter(street__contains= apt['street']).values()
-            
-
+            found_project = Project.objects.filter(neighbourhood__contains= apt['neighbourhood']).values()
+            # print (found_project)
+        
             for proj in found_project:
-                apt['street_number']= int(apt['street_number'])
-                proj['street_number']= int(proj['street_number'])
-                if int(apt['street_number']) in range (int(proj['street_number']-15),int(proj['street_number']+1)) or int(apt['street_number']) in range (int(proj['street_number']),int(proj['street_number']+16)) :
+                # apt['street_number']= int(apt['street_number'])
+                # proj['street_number']= int(proj['street_number'])
+                if (apt['neighbourhood']) == ((proj['neighbourhood'])) :
                     our_date = proj['dates']-2022
-                    if int(new_form[7])>= our_date:
+                    if int(new_form[6])>= our_date:
                         
 
                         
@@ -64,8 +63,8 @@ def result(request):
                             'size_project':proj['size_project'],
                             'company':proj['company'],
                             'location':proj['location'],
-                            'street':proj['street'],
-                            'street_number':proj['street_number'],
+                            # 'street':proj['street'],
+                            # 'street_number':proj['street_number'],
                             'dates':proj['dates'],
                             'value':proj['value'],
                             'years':our_date
@@ -80,7 +79,7 @@ def result(request):
         
         return render(request,'result.html',{'final_proj':final_proj})
     else:
-        city=Property.objects.filter(location__contains = new_form[4]).values()
+        city=Property.objects.filter(location__contains = new_form[3]).values()
         text = "Hmmm... It's looks like we don't have properties  that match your search.. please try again with different parameters"
         text1="Here are some examples for some other properties that may interest you:"
         return render(request,'result.html',{'text':text,'city':city,'text1':text1})
@@ -120,7 +119,7 @@ def register_request(request):
 
 
 def telaviva(request):
-    tlv = Property.objects.filter(location__contains = 'Tel-aviv')
+    tlv = Property.objects.filter(location__contains = 'תל אביב')
     return render(request,'tlv.html',{'tlv':tlv})
 
 
@@ -150,12 +149,12 @@ def single_apt(request,id):
         
         print(property.street)
         print('hello')
-        found_project = Project.objects.filter(street__contains= property.street).values()
+        found_project = Project.objects.filter(neighbourhood= property.neighbourhood).values()
         
         for proj in found_project:
-            property.street_number= int(property.street_number)
-            proj['street_number']= int(proj['street_number'])
-            if int(property.street_number) in range (int(proj['street_number']-15),int(proj['street_number']+1)) or int(property.street_number) in range (int(proj['street_number']),int(proj['street_number']+16)) :
+            # property.street_number= int(property.street_number)
+            # proj['street_number']= int(proj['street_number'])
+            if (property.neighbourhood) ==(proj['neighbourhood']) :
                 our_date = proj['dates']-2022
                 if int(futureprice)>= our_date:
                     
@@ -167,8 +166,8 @@ def single_apt(request,id):
                         'size_project':proj['size_project'],
                         'company':proj['company'],
                         'location':proj['location'],
-                        'street':proj['street'],
-                        'street_number':proj['street_number'],
+                        # 'street':proj['street'],
+                        # 'street_number':proj['street_number'],
                         'dates':proj['dates'],
                         'value':proj['value'],
                         'years':our_date
@@ -221,8 +220,8 @@ def project_api(request):
 def nav_search(request):
     if request.method=="POST":
         searched=request.POST["search1"]
-        A_property=Property.objects.filter(Q(location__contains = searched) | Q(street__contains = searched)| Q(room__contains = searched)| Q(floor__contains = searched)| Q(property_type__contains = searched)| Q(square_meter__contains = searched)| Q(street_number__contains = searched)| Q(price__contains = searched))
-        B_projects=Project.objects.filter(Q(type_project__contains = searched) | Q(size_project__contains = searched)| Q(company__contains = searched)| Q(value__contains = searched)| Q(location__contains = searched)| Q(street__contains = searched)| Q(street_number__contains = searched)| Q(dates__contains = searched))
+        A_property=Property.objects.filter(Q(location__contains = searched) | Q(street__contains = searched)| Q(room__contains = searched)| Q(floor__contains = searched)| Q(property_type__contains = searched) | Q(price__contains = searched)| Q(neighbourhood__contains = searched))
+        B_projects=Project.objects.filter(Q(type_project__contains = searched) | Q(size_project__contains = searched)| Q(company__contains = searched)| Q(value__contains = searched)| Q(location__contains = searched)| Q(dates__contains = searched)| Q(neighbourhood__contains = searched))
     if searched == None:
         searched="nothing"
 

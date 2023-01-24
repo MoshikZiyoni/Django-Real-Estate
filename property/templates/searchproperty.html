@@ -14,7 +14,7 @@
 
         
         {% block content %}
-        <body style="background-color: burlywood">
+        <body >
           <br>
 
           <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align: center; position: absolute; right: 30px;" >
@@ -24,7 +24,7 @@
              <p>will show the future price of the found properties these years. etc..</p>__
           </div>
         
-        <form action="{% url 'property:result' %}" method="POST" enctype=multipart/form-data name="searchproperty" style= "padding:10px 0px 0px 30px;">
+        <form action="{% url 'property:result' %}" method="POST" enctype=multipart/form-data name="searchproperty" style= "position: absolute; padding:10px 0px 0px 30px;">
           {% csrf_token %}
         
             <!-- {{ searchingform.as_table }}   -->
@@ -51,33 +51,63 @@
                 <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.property_type.id_for_label }}" >property type:</label>
                 
                  <select name="property_type" id="property_type">
-                <option for="{{ form.property_type.id_for_label }}" value="apartment">apartment</option>
-                <option for="{{ form.property_type.id_for_label }}" value="house">house</option> 
+                <option for="{{ form.property_type.id_for_label }}" value="דירה">דירה</option>
+                <option for="{{ form.property_type.id_for_label }}" value="דירת גן">דירת גן</option> 
+                <option for="{{ form.property_type.id_for_label }}" value="מיני פנטהאוז">מיני פנטהאוז</option> 
+                <option for="{{ form.property_type.id_for_label }}" value="דופלקס">דופלקס</option> 
+                <option for="{{ form.property_type.id_for_label }}" value="דירת גג">דירת גג</option> 
+                <option for="{{ form.property_type.id_for_label }}" value="פנטהאוז">פנטהאוז</option>
+
               </select>
                 
               
                 
             </div>
-            {{ searchingform.non_field_errors }}
+            <!-- {{ searchingform.non_field_errors }}
             <div class="fieldWrapper">
                 {{ searchingform.square_meter.errors }}
                 <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.square_meter.id_for_label }}">square meter:</label>
                 {{ searchingform.square_meter }}
                 
-            </div>
+            </div> -->
             {{ searchingform.non_field_errors }}
             <div class="fieldWrapper">
                 {{ searchingform.location.errors }}
                 <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.location.id_for_label }}">location:</label>
                 <select name="location" id="location">
-                  <option for="{{ form.location.id_for_label }}" value="Ramat-gan">Ramat-gan</option>
-                  <option for="{{ form.location.id_for_label }}" value="Tel-aviv">Tel-aviv</option>
-                  <option for="{{ form.location.id_for_label }}" value="Rishon-lezion">Rishon-lezion</option>
+                  <option for="{{ form.location.id_for_label }}" value="תל אביב יפו"> תל-אביב יפו</option>
+                  <option for="{{ form.location.id_for_label }}" value="רמת גן">רמת-גן</option>
+                  <option for="{{ form.location.id_for_label }}" value="ראשון לציון">ראשון-לציון</option>
+                  <option for="{{ form.location.id_for_label }}" value="גבעתיים">גבעתיים</option>
+                  <option for="{{ form.location.id_for_label }}" value="חולון">חולון</option>
 
                 </select>
                 
             </div>
+
             {{ searchingform.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ searchingform.neighbourhood.errors }}
+                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.neighbourhood.id_for_label }}">neighbourhood:</label>
+                <select name="neighbourhood" id="neighbourhood">
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="הצפון הישן"> הצפון הישן</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="לב העיר">לב העיר</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="יד אליהו">יד אליהו</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="נווה צדק">נווה צדק</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="פלורנטין">פלורנטין</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="נחלת יצחק">נחלת יצחק</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="המשתלה">המשתלה</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="רמת אביב החדשה">רמת אביב החדשה</option>
+                  <option for="{{ form.neighbourhood.id_for_label }}" value="כרם התימנים">כרם התימנים</option>
+
+
+
+                </select>
+                
+            </div>
+
+
+            <!-- {{ searchingform.non_field_errors }}
             <div class="fieldWrapper">
                 {{ searchingform.street.errors }}
                 <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.street.id_for_label }}">street:</label>
@@ -95,7 +125,7 @@
                   </optgroup>
                 </select>
                 
-            </div>
+            </div> -->
          
             {{ searchingform.non_field_errors }}
             <div class="fieldWrapper">

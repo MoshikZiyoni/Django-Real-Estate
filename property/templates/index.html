@@ -10,8 +10,7 @@
    
  
 <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">        
-<meta charset="utf-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"><meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -51,18 +50,20 @@
 
                             </div>
                             <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em">
-                                <div class="card">
-                                    <div class="card-body">
-                                      <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Rishon-Lezion</h5>
-                                      <img src="{% static 'assets/img/rishon.jpeg' %}" width="72%">
-                                      <a class="small text-white stretched-link" href="{% url 'property:rishon' %}">Rishon-Lezion Apartments</a>
-    
-                                      <p class="card-text" style="font-weight:750 ; font-style:oblique; font-size:large ;">See all the properties in Rishon-Lezion</p>
-                                      <a href="{% url 'property:rishon' %}" class="btn btn-primary"style="font-weight:750 ; font-style:italic; font-size:large ;" >Rishon-Lezion Apartments</a>
-                                    </div>
+                              <div class="card">
+                                  <div class="card-body">
+                                    <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Ramat-Gan</h5>
+                                    <img src="{% static 'assets/img/ramatgan.jpeg' %}" width="80%" height="80%">
+                                    <a class="small text-white stretched-link" href="{% url 'property:ramatgan' %}">Ramat Gan Apartments</a>
+  
+                                    <p class="card-text" style="font-weight:750 ; font-style:oblique; font-size:large ;">See all the properties in Ramat-Gan</p>
+                                    <a href="{% url 'property:ramatgan' %}" class="btn btn-primary" style="font-weight:750 ; font-style:italic; font-size:large ;">Ramat-Gan Apartments</a>
                                   </div>
                                 </div>
                               </div>
+                            </div>
+  
+  
                               <br><br><br>
 
 
@@ -84,21 +85,19 @@
                             
                         </div>
                         <div class="col-sm-6" style="width: 400px;height: 400px; box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em">
-                            <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Ramat-Gan</h5>
-                                  <img src="{% static 'assets/img/ramatgan.jpeg' %}" width="80%" height="80%">
-                                  <a class="small text-white stretched-link" href="{% url 'property:ramatgan' %}">Ramat Gan Apartments</a>
+                          <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title" style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;">Rishon-Lezion</h5>
+                                <img src="{% static 'assets/img/rishon.jpeg' %}" width="72%">
+                                <a class="small text-white stretched-link" href="{% url 'property:rishon' %}">Rishon-Lezion Apartments</a>
 
-                                  <p class="card-text" style="font-weight:750 ; font-style:oblique; font-size:large ;">See all the properties in Ramat-Gan</p>
-                                  <a href="{% url 'property:ramatgan' %}" class="btn btn-primary" style="font-weight:750 ; font-style:italic; font-size:large ;">Ramat-Gan Apartments</a>
-                                </div>
+                                <p class="card-text" style="font-weight:750 ; font-style:oblique; font-size:large ;">See all the properties in Rishon-Lezion</p>
+                                <a href="{% url 'property:rishon' %}" class="btn btn-primary"style="font-weight:750 ; font-style:italic; font-size:large ;" >Rishon-Lezion Apartments</a>
                               </div>
                             </div>
                           </div>
-
-
-                            <br><br><br>
+                        </div>
+                        <br><br><br>
 
                           <!-- ##### -->
                        

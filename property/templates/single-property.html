@@ -26,21 +26,20 @@ align-items: center;">
         <p class="card-text" style="font-weight: 600; font-style: oblique; font-size: larger;"> Room: {{property.room}} <br>
           <!-- ID:{{property.id}} -->
             Floor: {{property.floor}}<br>
-            Square meter: {{property.square_meter}}<br>
+            Neighbourhood: {{property.neighbourhood}}<br>
             Location: {{property.location}}<br>
             Street: {{property.street}}<br>
-            Street number: {{property.street_number}}<br>
             Price: {{property.price}}<br>
-            <!-- <img src="{% static 'images/2image.jpg' %}" alt="property image"> -->
-            <!-- <img src="{%  static 'images/2image.jpg' %}" alt="property image"> -->
+            <div style="width:25%; position: absolute; top: 50%; right: 0; transform: translate(1%, -50%);">
+              <img src="{% static 'assets/img/' %}{{ property.id }}image.jpg" style="width:60%  ;">
+            </div>
 
-            <!-- <img src="{{ MEDIA_URL }}2image.jpg" alt="property image"> -->
-            ID:{{property.id}}
 
-            <!-- <img src="{% static 'assets/img/2image.jpg' %}" style="width:85% ;">
-             -->
-             <!-- <img src="{% static 'assets/img/'  'image.jpg' %}" style="width:85% ;"> --> WORKING
-             <img src="{% static 'assets/img/' ~ property.id ~ 'image.jpg' %}" style="width:85% ;">
+             
+             
+
+        
+
 
 
 <br><br>
@@ -73,8 +72,8 @@ align-items: center;">
               Company: {{project.company}}<br>
               Value: {{project.value}}<br>
               Location: {{project.location}}<br>
-              Street: {{project.street}}<br>
-              Street number: {{project.street_number}}<br>
+              Neighbourhood: {{project.neighbourhood}}<br>
+              
               Dates: {{project.dates}}<br>
             </p>
               <p style="background-color: green; color: antiquewhite;">Future price : {{project.final_price}}</p> <br> 

@@ -16,7 +16,7 @@ from django.utils.translation import gettext as _
 class Property(models.Model):
    id = models.AutoField(primary_key=True, editable=False)
    room = models.SmallIntegerField(_("room"),null=False)
-   floor = models.FloatField(_("floor"),null=False)
+   floor = models.SmallIntegerField(_("floor"),null=False)
    property_type = models.CharField(_("property_type"),max_length=100, null=False)
 #    square_meter = models.SmallIntegerField(_("square_meter"),null=False)
    street=models.CharField(_("street"),max_length=100, null=False)

@@ -140,7 +140,7 @@ def all_projects(request):
 ###This function it's for the single property includes filter to know the projects depends on the investment range
 def single_apt(request,id):
     final_proj = []
-    property = Property.objects.get(id=id)
+    property = Property.objects.get(id=id)    
     futureprice = request.GET.get('num')
     if futureprice == None:
         futureprice = "-100"
@@ -166,7 +166,7 @@ def single_apt(request,id):
                         'size_project':proj['size_project'],
                         'company':proj['company'],
                         'location':proj['location'],
-                        # 'street':proj['street'],
+                        'neighbourhood':proj['neighbourhood'],
                         # 'street_number':proj['street_number'],
                         'dates':proj['dates'],
                         'value':proj['value'],
@@ -227,3 +227,4 @@ def nav_search(request):
 
            
     return render (request,"search_all.html",{"A_property":A_property, "B_projects":B_projects, "searched":searched})
+

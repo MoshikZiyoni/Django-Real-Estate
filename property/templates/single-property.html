@@ -29,7 +29,7 @@ align-items: center;">
             Neighbourhood: {{property.neighbourhood}}<br>
             Location: {{property.location}}<br>
             Street: {{property.street}}<br>
-            Price: {{property.price}}<br>
+            Price: {{property.price|intcomma}}<br>
             <div style="width:25%; position: absolute; top: 50%; right: 0; transform: translate(1%, -50%);">
               <img src="{% static 'assets/img/' %}{{ property.id }}image.jpg" style="width:60%  ;">
             </div>

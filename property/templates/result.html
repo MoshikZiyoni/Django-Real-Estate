@@ -17,6 +17,8 @@
           Results Found:
       </div>
       <div class="card-body">
+        <!-- <table id="dataTable" class="table table-bordered"  width="100%" cellspacing="0"> another table-->
+
           <table id="datatablesSimple" class="table table-bordered"  width="100%" cellspacing="0">
 
             <thead>
@@ -50,11 +52,10 @@
                     <th>{{proj.neighbourhood}}</th>
                     <th>{{proj.location}}</th>
                     <th>{{proj.street}}</th>
-                    <!-- <th>{{proj.street_number}}</th>          -->
-                    <td>{{proj.price}} {{proj.type_project}}</td>
+                    <td><span class="price-color">{{proj.price|intcomma}}</span>  {{proj.type_project}}</td>
                     <td>{{proj.value}}</td>
                     <td>{{ proj.years }}</td>
-                    <th style='background-color: limegreen;'>{{proj.final_price}}</th>
+                    <th style='background-color: limegreen;'>{{proj.final_price|intcomma}}</th>
                 </tr> 
                 {% endfor %}
                     </tbody>
@@ -93,7 +94,7 @@
           <th>{{ i.neighbourhood }}</th>
             <th>{{ i.location }}</th>
               <th>{{ i.street }}</th>
-                  <th>{{ i.price }}</th>
+                  <th>{{ i.price|intcomma }}</th>
         
                 </tr>
                 {% endfor %}  
@@ -103,7 +104,7 @@
   </div> 
 </div> 
 <style>
-  th:hover {
+  td:hover {
       background-color: lightgray;
   }
   </style>

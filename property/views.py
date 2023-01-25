@@ -42,7 +42,7 @@ def result(request):
             }
             
             final_proj.append(found_apt1)
-            apt_price=apt['price']
+            apt_price=int(apt['price'])
             found_project = Project.objects.filter(neighbourhood__contains= apt['neighbourhood']).values()
             # print (found_project)
         
@@ -50,7 +50,7 @@ def result(request):
                 # apt['street_number']= int(apt['street_number'])
                 # proj['street_number']= int(proj['street_number'])
                 if (apt['neighbourhood']) == ((proj['neighbourhood'])) :
-                    our_date = proj['dates']-2022
+                    our_date = proj['dates']-2023
                     if int(new_form[6])>= our_date:
                         
 
@@ -58,7 +58,7 @@ def result(request):
                         new_price = apt_price*proj['value']
                         apt_price = apt_price+new_price
                         final_proj1={
-                            'final_price': apt_price,
+                            'final_price': int(apt_price),
                             'type_project':proj['type_project'],
                             'size_project':proj['size_project'],
                             'company':proj['company'],

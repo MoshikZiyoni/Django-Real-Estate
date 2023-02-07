@@ -4,154 +4,206 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
 </head>
 
-        
-        {% block content %}
-        <body >
-          <br>
 
-          <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align: center; position: absolute; right: 30px;" >
-            __ <p >Please search for a property according to your maximum criteria.</p>
-            <p>For example:<br>The max price of 10,000,000 will show all the properties  that are included in this price.</p>
-            <p> max investment range of 7 years</p>
-             <p>will show the future price of the found properties these years. etc..</p>__
-          </div>
-        
-        <form action="{% url 'property:result' %}" method="POST" enctype=multipart/form-data name="searchproperty" style= "position: absolute; padding:10px 0px 0px 30px;">
-          {% csrf_token %}
-        
-            <!-- {{ searchingform.as_table }}   -->
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper"   >
-                <!-- {{ searchingform.room.errors }} -->
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large;   border-bottom: 2px solid wheat; "  for="{{ form.room.id_for_label }}">room: </label>
-                
-                {{ searchingform.room }}
-                
-            </div>
+{% block content %}
 
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper" >
-                {{ searchingform.floor.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid wheat;" for="{{ form.floor.id_for_label }}">floor:</label>
-                {{ searchingform.floor }}
-                
-            </div>
+<body>
+  <br>
 
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.property_type.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.property_type.id_for_label }}" >property type:</label>
-                
-                 <select name="property_type" id="property_type">
-                <option for="{{ form.property_type.id_for_label }}" value="דירה">דירה</option>
-                <option for="{{ form.property_type.id_for_label }}" value="דירת גן">דירת גן</option> 
-                <option for="{{ form.property_type.id_for_label }}" value="מיני פנטהאוז">מיני פנטהאוז</option> 
-                <option for="{{ form.property_type.id_for_label }}" value="דופלקס">דופלקס</option> 
-                <option for="{{ form.property_type.id_for_label }}" value="דירת גג">דירת גג</option> 
-                <option for="{{ form.property_type.id_for_label }}" value="פנטהאוז">פנטהאוז</option>
+  <div class="text"
+    style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align: center; position: absolute; right: 30px;">
+    __ <p>Please search for a property according to your maximum criteria.</p>
+    <p>For example:<br>The max price of 10,000,000 will show all the properties that are included in this price.</p>
+    <p> max investment range of 7 years</p>
+    <p>will show the future price of the found properties these years. etc..</p>__
+  </div>
 
-              </select>
-                
-              
-                
-            </div>
-            <!-- {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.square_meter.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.square_meter.id_for_label }}">square meter:</label>
-                {{ searchingform.square_meter }}
-                
-            </div> -->
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.location.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.location.id_for_label }}">location:</label>
-                <select name="location" id="location">
-                  <option for="{{ form.location.id_for_label }}" value="תל אביב יפו"> תל-אביב יפו</option>
-                  <option for="{{ form.location.id_for_label }}" value="רמת גן">רמת-גן</option>
-                  <option for="{{ form.location.id_for_label }}" value="ראשון לציון">ראשון-לציון</option>
-                  <option for="{{ form.location.id_for_label }}" value="גבעתיים">גבעתיים</option>
-                  <option for="{{ form.location.id_for_label }}" value="חולון">חולון</option>
+  <form action="{% url 'property:result' %}" method="POST" enctype=multipart/form-data name="searchproperty"
+    style="position: absolute; padding:10px 0px 0px 30px;">
+    {% csrf_token %}
 
-                </select>
-                
-            </div>
+    <!-- {{ searchingform.as_table }}   -->
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      <!-- {{ searchingform.room.errors }} -->
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large;   border-bottom: 2px solid orangered; "
+        for="{{ form.room.id_for_label }}">room: </label>
 
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.neighbourhood.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.neighbourhood.id_for_label }}">neighbourhood:</label>
-                <select name="neighbourhood" id="neighbourhood">
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="הצפון הישן"> הצפון הישן</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="לב העיר">לב העיר</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="יד אליהו">יד אליהו</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="נווה צדק">נווה צדק</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="פלורנטין">פלורנטין</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="נחלת יצחק">נחלת יצחק</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="המשתלה">המשתלה</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="רמת אביב החדשה">רמת אביב החדשה</option>
-                  <option for="{{ form.neighbourhood.id_for_label }}" value="כרם התימנים">כרם התימנים</option>
+      {{ searchingform.room }}
+
+    </div>
+
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      {{ searchingform.floor.errors }}
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large ; border-bottom: 2px solid orangered;"
+        for="{{ form.floor.id_for_label }}">floor:</label>
+      {{ searchingform.floor }}
+
+    </div>
+
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      {{ searchingform.property_type.errors }}
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid orangered;"
+        for="{{ form.property_type.id_for_label }}">property type:</label>
+
+      <select name="property_type" id="property_type">
+        <option for="{{ form.property_type.id_for_label }}" value="דירה">דירה</option>
+        <option for="{{ form.property_type.id_for_label }}" value="דירת גן">דירת גן</option>
+        <option for="{{ form.property_type.id_for_label }}" value="מיני פנטהאוז">מיני פנטהאוז</option>
+        <option for="{{ form.property_type.id_for_label }}" value="דופלקס">דופלקס</option>
+        <option for="{{ form.property_type.id_for_label }}" value="דירת גג">דירת גג</option>
+        <option for="{{ form.property_type.id_for_label }}" value="פנטהאוז">פנטהאוז</option>
+
+      </select>
 
 
 
-                </select>
-                
-            </div>
+    </div>
 
 
-            <!-- {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.street.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.street.id_for_label }}">street:</label>
-                <select name="street" id="street">
-                  <optgroup label="Ramat-gan">
-                  <option for="{{ form.street.id_for_label }}" value="Alenbi">Alenbi</option>
-                  <option for="{{ form.street.id_for_label }}" value="King-george">King-george</option>  
-                </optgroup>
-                  <optgroup label="Tel-aviv">
-                  <option for="{{ form.street.id_for_label }}" value="Rotchild">Rotchild</option>
-                  <option for="{{ form.street.id_for_label }}" value="Dizingof">Dizingof</option>
-                  </optgroup>
-                  <optgroup label="Rishon-lezion">
-                  <option for="{{ form.street.id_for_label }}" value="Bugrashov">Bugrashov</option>
-                  </optgroup>
-                </select>
-                
-            </div> -->
-         
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.price.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.price.id_for_label }}">price</label>
-                {{ searchingform.price }}
-                
-            </div>
-            {{ searchingform.non_field_errors }}
-            <div class="fieldWrapper">
-                {{ searchingform.investment_range.errors }}
-                <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid wheat;" for="{{ form.investment_range.id_for_label }}">investment-range</label>
-                {{ searchingform.investment_range }}
-                
-            </div>
-<br>
 
-                  <input type="submit" value = 'Search properties' style="background-color: blueviolet; border-radius: 2em; color: azure; font-weight: 500;">
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      {{ searchingform.location.errors }}
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid orangered;"
+        for="{{ form.location.id_for_label }}">location:</label>
+      <select name="location" id="location">
+        <option for="{{ form.location.id_for_label }}" value="תל אביב יפו"> תל-אביב-יפו</option>
+        <option for="{{ form.location.id_for_label }}" value="רמת גן">רמת-גן</option>
+        <option for="{{ form.location.id_for_label }}" value="ראשון לציון">ראשון-לציון</option>
+
+
+      </select>
+
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#location").change(function () {
+          var selectedLocation = $(this).val();
+          $("#neighbourhood optgroup").hide();
           
-              </form> 
-              <div style=" position: absolute;right: 0px;bottom: 0px; ; ; ;"><img src="{% static 'assets/img/Property-Search.jpg' %}"  style="height:400px; width: 500px;"></div>
+          if (selectedLocation == "רמת גן") {
+            $("#neighbourhood optgroup[label='רמת גן']").show();
+          }
+          else if (selectedLocation == "תל אביב יפו") {
+            $("#neighbourhood optgroup[label='תל אביב יפו']").show();
+          }
+          else if (selectedLocation == "ראשון לציון") {
+            $("#neighbourhood optgroup[label='ראשון לציון']").show();
+          }
+        });
+      });
+    </script>
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      {{ searchingform.neighbourhood.errors }}
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid orangered;"
+        for="{{ form.neighbourhood.id_for_label }}">neighbourhood:</label>
+      <select name="neighbourhood" id="neighbourhood">
+        <optgroup label="תל אביב יפו">
+        <option for="{{ form.neighbourhood.id_for_label }}" value="הצפון הישן"> הצפון הישן</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="לב העיר">לב העיר</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="יד אליהו">יד אליהו</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="נווה צדק">נווה צדק</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="פלורנטין">פלורנטין</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="נחלת יצחק">נחלת יצחק</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="המשתלה">המשתלה</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="רמת אביב החדשה">רמת אביב החדשה</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="כרם התימנים">כרם התימנים</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="מרכז">מרכז</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="הגוש הגדול">הגוש הגדול</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="ביצרון">ביצרון</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="גני שרונה">גני שרונה</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="מונטיפיורי">מונטיפיורי</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="מתחם פארק צמרת">מתחם פארק צמרת</option>
+        <option for="{{ form.neighbourhood.id_for_label }}" value="רמת אביב ג">רמת אביב ג</option>
+  
+      </optgroup>
+
+        <optgroup label="רמת גן" >
+          <option for="{{ form.neighbourhood.id_for_label }}" value="הגפן">הגפן</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="הראשונים">הראשונים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="תל גנים">תל גנים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="יד לבנים">יד לבנים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="מרום נווה">מרום נווה</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="מרכז">מרכז</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="בורוכוב">בורוכוב</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="בן צבי">בן צבי</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="גבעת רמב``ם">גבעת רמב``ם</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="רמת השקמה">רמת השקמה</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="הר שלום">הר שלום</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="חרוזים">חרוזים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="מרכז העיר">מרכז העיר</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="מתחם הבורסה">מתחם הבורסה</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="נווה יהושע">נווה יהושע</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="שיכון המזרחי">שיכון המזרחי</option>
 
 
 
-        {% endblock %}     
+        </optgroup>
+
+        <optgroup label="ראשון לציון">
+          <option for="{{ form.neighbourhood.id_for_label }}" value="רמז">רמז</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="רמב``ם">רמב``ם</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="כצנלסון">כצנלסון</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="אברמוביץ">אברמוביץ</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="השומר">השומר</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="שיכון המזרח">שיכון המזרח</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="נווה דקלים">נווה דקלים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="נווה ים">נווה ים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="רביבים">רביבים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="רמת אליהו">רמת אליהו</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="נווה הדרים">נווה הדרים</option>
+          <option for="{{ form.neighbourhood.id_for_label }}" value="קדמת ראשון">קדמת ראשון</option>
+        </optgroup>
+
+
+      </select>
+
+    </div>
+
+
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      {{ searchingform.price.errors }}
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid orangered;"
+        for="{{ form.price.id_for_label }}">price</label>
+      {{ searchingform.price }}
+
+    </div>
+    {{ searchingform.non_field_errors }}
+    <div class="fieldWrapper">
+      {{ searchingform.investment_range.errors }}
+      <label style="font-weight:750 ; font-style:oblique; font-size:x-large ;border-bottom: 2px solid orangered;"
+        for="{{ form.investment_range.id_for_label }}">investment-range</label>
+      {{ searchingform.investment_range }}
+
+    </div>
+    <br>
+
+    <input type="submit" value='Search properties'
+      style="background-color: blueviolet; border-radius: 2em; color: azure; font-weight: 500;">
+
+  </form>
+  <div style=" position: absolute;right: 0px;bottom: 0px; ; ; ;"><img
+      src="{% static 'assets/img/Property-Search.jpg' %}" style="height:400px; width: 500px;"></div>
+
+
+
+  {% endblock %}
 
 </body>
-</html>
 
+</html>

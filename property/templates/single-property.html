@@ -3,11 +3,10 @@
 
 {% block content %} 
 
-<body style="background-color: burlywood">
-
+<body>
   <div class="text" style="color: white; font-size: large; font-style: oblique; font-weight: 400; background-color: rgb(218, 153, 32); border-radius: 10em; box-shadow:-11px 24px 62px -13px rgba(0,0,0,0.69) ; text-align:center ; position:absolute right20px ; ;" >
     <p style="font-size:large ;" >Use the button INVESTMENT-RANGE </p>
-    <p style="font-size: large;">Find out how much the apartment will be worth and which projects will be built next to it.</p>
+    <p  style="font-size: large;">Find out how much the apartment will be worth and which projects will be built next to it.</p>
   </div>
 
 <div class="row row-cols-1 row-cols-md-5 g-4" style="height: 100vh;
@@ -18,7 +17,7 @@ align-items: center;">
       
     
     <div class="col" style=" box-shadow: -11px 24px 62px -13px rgba(0,0,0,0.69);border-radius: 2em;width: 100% ;height: 100%;" >
-      <div class="card" style=" border-radius: 2em; background-color: rgba(196, 230, 253, 0.945); ">
+      <div class="card " style=" border-radius: 2em; background-color: rgba(196, 230, 253, 0.945); ">
         <div class="card-body">
       
           <h5 class="card-title" style="color: rgb(25, 48, 182); text-decoration: underline; font-style: oblique; font-size: xx-large;">{{property.property_type}}</h5>
@@ -62,6 +61,7 @@ align-items: center;">
   <input type="submit" value="Investment range" class="btn btn-primary" >
 
 </form>
+
 <br>
             {% for project in final_proj %}
             <p class="card-text" style="font-weight: 600; font-style: oblique;font-size: xx-large; text-decoration: underline">Project:<br>

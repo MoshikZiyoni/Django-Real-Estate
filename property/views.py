@@ -124,12 +124,12 @@ def telaviva(request):
 
 
 def ramatgan(request):
-    rmg = Property.objects.filter(location__contains = 'Ramat-gan')
+    rmg = Property.objects.filter(location__contains = 'רמת גן')
     return render(request,'Ramat-gan.html',{'rmg':rmg})
 
 
 def rishon(request):
-    rishon = Property.objects.filter(location__contains = 'Rishon-lezion')
+    rishon = Property.objects.filter(location__contains = 'ראשון לציון')
     return render(request,'rishon.html',{'rishon':rishon})
 
 

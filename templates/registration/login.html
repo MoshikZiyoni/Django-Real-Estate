@@ -40,12 +40,16 @@
     {% csrf_token %}
     <table>
     <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
+        <td>{{ form.username.label_tag }} </td>
+        <!-- <td>{{ form.username }}</td> -->
+        <td><input type="text" name="username" value="guest"></td>
+
     </tr>
     <tr>
         <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+        <!-- <td>{{ form.password }}</td> -->
+        <td><input type="password" name="password" value="Hello1212!"></td>
+
     </tr>
     </table>
     
@@ -84,7 +88,7 @@
             
           </ul>
           
-                                       
+          <!-- <div><a href="{% url 'home'}">continue as a guest</a></div> -->
         </div>
         <div class="card-footer text-center py-3">
             <div class="small"><a href="{% url 'register' %}">Need an account? Sign up!</a></div>
